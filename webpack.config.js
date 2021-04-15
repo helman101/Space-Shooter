@@ -1,28 +1,32 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
+  mode: 'development',
+  entry: "./src/game.js",
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'game.js'
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'build'),
-  },
+  plugins: [
+    new CleanWebpackPlugin({
+      cleanAfterEveryBuildPatterns: ['dist']
+  }),
+    new HtmlWebpackPlugin()
+  ],
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src/'),
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
+    rules: [{
+      test: /\.(png|jpg|gif)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          outputPath: 'assets'
         }
       }
-    ]
+    }]
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist')
   }
-}
+};

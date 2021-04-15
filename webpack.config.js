@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,20 +12,38 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['dist']
-  }),
-    new HtmlWebpackPlugin()
+      root: path.resolve(__dirname, "../")
+    }),
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true)
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
   ],
   module: {
-    rules: [{
-      test: /\.(png|jpg|gif)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          outputPath: 'assets'
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
         }
+      },
+      {
+        test: [/\.vert$/, /\.frag$/],
+        use: "raw-loader"
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg|xml)$/i,
+        use: "file-loader"
+      },
+      {
+        test: /\.mp3$/,
+        loader: 'file-loader'
       }
-    }]
+    ]
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist')

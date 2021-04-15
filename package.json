@@ -226,6 +226,7 @@
     "path-key": "^2.0.1",
     "path-parse": "^1.0.6",
     "path-type": "^2.0.0",
+    "phaser": "^3.54.0",
     "picomatch": "^2.2.3",
     "pify": "^2.3.0",
     "pkg-dir": "^2.0.0",

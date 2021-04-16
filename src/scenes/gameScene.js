@@ -11,12 +11,14 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    // add background image to scene
     let image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
-    image.rotation += 1.57; 
 
+    // add functional keyboards to move the player
     this.cursors = this.input.keyboard.createCursorKeys();
 
+    // create and add the player to the scene
     this.player = new Player(
       this, 
       this.game.config.width * 0.5,

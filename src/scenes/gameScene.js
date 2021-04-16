@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import Player from '../entities/playerEntity'
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -10,7 +11,12 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.image(300, 700, 'sprPlayer');
+    this.player = new Player(
+      this, 
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.8,
+      'sprPlayer'
+    );
   }
 }
 

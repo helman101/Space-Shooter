@@ -36,6 +36,7 @@ class PreloaderScene extends Phaser.Scene {
         fill: '#ffffff'
       }
     });
+    
     loadingText.setOrigin(0.5, 0.5);
   
     var percentText = this.make.text({
@@ -85,9 +86,9 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('sprFastEnemy', fastEnemy);
     this.load.image('sprChaserEnemy', chaserEnemy);
     this.load.image('bgImage', background);
-    this.load.image('sprbullet1', bulletOne);
-    this.load.image('sprbullet2', bulletTwo);
-    this.load.image('sprbulletL', bulletLarge);
+    this.load.image('sprBullet1', bulletOne);
+    this.load.image('sprBullet2', bulletTwo);
+    this.load.image('sprBulletL', bulletLarge);
     this.load.audio('mainTheme', mainTheme);
     this.load.audio('explosion1', explosionOne);
     this.load.audio('explosion2', explosionTwo);

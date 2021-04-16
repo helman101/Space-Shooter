@@ -20,6 +20,7 @@ class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
 
     this.time.addEvent({
       delay: 100,

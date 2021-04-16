@@ -11,7 +11,8 @@ import mainTheme from '../assets/OutThere.ogg';
 import explosionOne from '../assets/Explosion.wav';
 import explosionTwo from '../assets/Explosion2.wav';
 import battleTheme from '../assets/Battle-Theme.mp3';
-import laserSound from'../assets/Laser2.wav';
+import laserSound from '../assets/Laser2.wav';
+import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
 
 
 class BootScene extends Phaser.Scene {
@@ -79,6 +80,7 @@ class BootScene extends Phaser.Scene {
       assetText.destroy();
     });
   
+    this.load.image('spaceButton', spaceButton);
     this.load.image('sprPlayer', player);
     this.load.image('sprNormalEnemy', normalEnemy);
     this.load.image('sprFastEnemy', fastEnemy);

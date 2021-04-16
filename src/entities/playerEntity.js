@@ -21,4 +21,10 @@ class Player extends Entity {
   moveRight() {
     this.body.velocity.x = this.getData('speed');
   }
+
+  update() {
+    this.body.setVelocity(0, 0);
+  }
 }
+
+export default Player;

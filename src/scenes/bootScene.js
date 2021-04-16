@@ -13,7 +13,7 @@ class BootScene extends Phaser.Scene {
     this.load.image('sprPlayer', player);
     this.load.image('sprNormalEnemy', normalEnemy);
     this.load.image('sprFastEnemy', fastEnemy);
-    this.load.image('sprchaserEnemy', chaserEnemy1)
+    this.load.image('sprchaserEnemy', chaserEnemy);
   };
 
   create() {

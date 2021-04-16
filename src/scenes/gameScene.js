@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import Player from '../entities/playerEntity'
+import NormalEnemy from '../entities/normalEnemy'
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -17,6 +18,22 @@ class GameScene extends Phaser.Scene {
 
     // add functional keyboards to move the player
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.enemies = this.add.group();
+
+    this.time.addEvent({
+      delay: 100,
+      callback: function() {
+        var enemy = new NormalEnemy(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0
+        );
+        this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true
+    });
 
     // create and add the player to the scene
     this.player = new Player(

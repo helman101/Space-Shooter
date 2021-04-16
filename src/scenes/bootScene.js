@@ -19,17 +19,6 @@ class BootScene extends Phaser.Scene {
     super('Boot');
   }
 
-  init () {
-    this.readyCount = 0;
-  }
-  
-  ready () {
-    this.readyCount++;
-    if (this.readyCount === 2) {
-      this.scene.start('Title');
-    }
-  }
-
   preload() {
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
@@ -88,11 +77,7 @@ class BootScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
-      this.ready();
-    }.bind(this));
-    
-    this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
-  
+    });
   
     this.load.image('sprPlayer', player);
     this.load.image('sprNormalEnemy', normalEnemy);
@@ -110,7 +95,7 @@ class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start('Game');
+    this.scene.start('Title')
   }
 }
 

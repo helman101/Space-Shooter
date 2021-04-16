@@ -23,7 +23,7 @@ class GameScene extends Phaser.Scene {
     this.enemyLasers = this.add.group();
 
     this.time.addEvent({
-      delay: 100,
+      delay: 1500,
       callback: function() {
         var enemy = new NormalEnemy(
           this,

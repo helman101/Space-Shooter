@@ -3,7 +3,8 @@ import Entity from './entity';
 class Player extends Entity {
   constructor(scene, x, y, texture) {
     super(scene, x, y, texture, 'player');
-    this.setData('speed', 180);
+    this.body.setCollideWorldBounds(true)
+    this.setData('speed', 200);
   }
 
   moveUp() {

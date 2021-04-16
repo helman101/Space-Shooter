@@ -11,6 +11,10 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    let image = this.add.image(300, 400, 'bgImage');
+    image.setScale(0.4);
+    image.rotation += 1.57; 
+
     this.cursors = this.input.keyboard.createCursorKeys();
 
     this.player = new Player(

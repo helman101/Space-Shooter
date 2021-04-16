@@ -36,7 +36,7 @@ module.exports = {
         use: 'file-loader',
       },
       {
-        test: /\.mp3$/,
+        test: /\.(mp3|ogg)$/,
         loader: 'file-loader',
       },
     ],

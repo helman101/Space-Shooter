@@ -31,9 +31,11 @@ class GameScene extends Phaser.Scene {
 
     // add functional keyboards to move the player
     this.cursors = this.input.keyboard.createCursorKeys();
+    this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
+    this.playerBullets = this.add.group();
 
     this.time.addEvent({
       delay: 1500,
@@ -99,6 +101,14 @@ class GameScene extends Phaser.Scene {
     }
     else if (this.cursors.right.isDown) {
       this.player.moveRight();
+    }
+
+    if (this.keySpace.isDown) {
+      this.player.setData("isShooting", true);
+    }
+    else {
+      this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
+      this.player.setData("isShooting", false);
     }
 
     for (var i = 0; i < this.enemies.getChildren().length; i++) {

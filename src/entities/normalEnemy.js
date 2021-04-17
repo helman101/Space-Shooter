@@ -15,11 +15,19 @@ class NormalEnemy extends Entity {
           this.y + (this.width * 0.5)
         );
         laser.setScale(this.scaleX);
-        this.scene.enemyLasers.add(laser);
+        this.scene.enemyBullets.add(laser);
       },
       callbackScope: this,
       loop: true
     });
+  }
+
+  onDestroy() {
+    if (this.shootTimer !== undefined) {
+      if (this.shootTimer) {
+        this.shootTimer.remove(false);
+      }
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import Player from '../entities/playerEntity'
 import NormalEnemy from '../entities/normalEnemy'
 import ChaserEnemy from '../entities/chaserEnemy'
 import FastEnemy from '../entities/fastEnemy'
+import laserUpdate from '../objects/laserUpdate'
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -34,7 +35,7 @@ class GameScene extends Phaser.Scene {
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     this.enemies = this.add.group();
-    this.enemyLasers = this.add.group();
+    this.enemyBullets = this.add.group();
     this.playerBullets = this.add.group();
 
     this.time.addEvent({
@@ -84,6 +85,16 @@ class GameScene extends Phaser.Scene {
       'sprPlayer'
     );
 
+    this.physics.add.collider(this.playerBullet, this.enemies, function(playerBullet, enemy) {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+      
+        enemy.explode(true);
+        playerLaser.destroy();
+      }
+    });
   }
 
   update() {
@@ -111,11 +122,9 @@ class GameScene extends Phaser.Scene {
       this.player.setData("isShooting", false);
     }
 
-    for (var i = 0; i < this.enemies.getChildren().length; i++) {
-      var enemy = this.enemies.getChildren()[i];
-
-      enemy.update();
-    }
+    laserUpdate(this, this.enemies.getChildren(), 'enemy');
+    laserUpdate(this, this.enemyBullets.getChildren(), 'laser');
+    laserUpdate(this, this.playerBullets.getChildren(), 'laser');
   }
 }
 

@@ -3,6 +3,7 @@ import Entity from './entity';
 class ChaserEnemy extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprChaserEnemy', 'chaserEnemy');
+    this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.states = {
       NORMAL: "NORMAL",
       CHASE: "CHASE"
@@ -36,7 +37,7 @@ class ChaserEnemy extends Entity {
       }
     }
 
-    if (this.x < this.scene.player.x) {
+    if (this.x < this.scene.player.x && this.state == this.states.CHASE) {
       this.angle -= 5;
     }
     else {

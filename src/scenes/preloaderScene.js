@@ -83,8 +83,8 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('spaceButton', spaceButton);
     this.load.image('sprPlayer', player);
     this.load.image('sprNormalEnemy', normalEnemy);
-    this.load.image('sprFastEnemy', fastEnemy);
-    this.load.image('sprChaserEnemy', chaserEnemy);
+    this.load.image('sprChaserEnemy', fastEnemy);
+    this.load.image('sprFastEnemy', chaserEnemy);
     this.load.image('bgImage', background);
     this.load.image('sprBullet1', bulletOne);
     this.load.image('sprBullet2', bulletTwo);

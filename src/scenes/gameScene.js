@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import Player from '../entities/playerEntity'
 import NormalEnemy from '../entities/normalEnemy'
+import ChaserEnemy from '../entities/chaserEnemy'
+import FastEnemy from '../entities/fastEnemy'
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -9,6 +11,17 @@ class GameScene extends Phaser.Scene {
 
   preload() {
 
+  }
+
+  getEnemiesByType(type) {
+    var arr = [];
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      var enemy = this.enemies.getChildren()[i];
+      if (enemy.getData("type") == type) {
+        arr.push(enemy);
+      }
+    }
+    return arr;
   }
 
   create() {
@@ -25,12 +38,37 @@ class GameScene extends Phaser.Scene {
     this.time.addEvent({
       delay: 1500,
       callback: function() {
-        var enemy = new NormalEnemy(
-          this,
-          Phaser.Math.Between(0, this.game.config.width),
-          0
-        );
-        this.enemies.add(enemy);
+        var enemy = null;
+
+        if (Phaser.Math.Between(0, 10) >= 3) {
+          enemy = new NormalEnemy(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+        else if (Phaser.Math.Between(0, 10) >= 5) {
+          if (this.getEnemiesByType("ChaserShip").length < 5) {
+
+            enemy = new ChaserEnemy(
+              this,
+              Phaser.Math.Between(0, this.game.config.width),
+              0
+            );
+          }
+        }
+        else {
+          enemy = new FastEnemy(
+            this,
+            Phaser.Math.Between(0, this.game.config.width),
+            0
+          );
+        }
+
+        if (enemy !== null) {
+          enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+          this.enemies.add(enemy);
+        }
       },
       callbackScope: this,
       loop: true
@@ -61,6 +99,12 @@ class GameScene extends Phaser.Scene {
     }
     else if (this.cursors.right.isDown) {
       this.player.moveRight();
+    }
+
+    for (var i = 0; i < this.enemies.getChildren().length; i++) {
+      var enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
     }
   }
 }

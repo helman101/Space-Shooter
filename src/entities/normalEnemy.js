@@ -12,7 +12,7 @@ class NormalEnemy extends Entity {
         var laser = new EnemyBullet(
           this.scene,
           this.x,
-          this.y
+          this.y + (this.width * 0.5)
         );
         laser.setScale(this.scaleX);
         this.scene.enemyLasers.add(laser);

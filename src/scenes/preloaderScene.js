@@ -13,6 +13,7 @@ import explosionTwo from '../assets/Explosion2.wav';
 import battleTheme from '../assets/Battle-Theme.mp3';
 import laserSound from '../assets/Laser2.wav';
 import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
+import explosion from '../assets/explosion.png'
 
 class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -94,6 +95,10 @@ class PreloaderScene extends Phaser.Scene {
     this.load.audio('explosion2', explosionTwo);
     this.load.audio('battleTheme', battleTheme);
     this.load.audio('laser', laserSound);
+    this.load.spritesheet("sprExplosion", explosion, {
+      frameWidth: 90,
+      frameHeight: 89
+    });
   }
 
   create() {

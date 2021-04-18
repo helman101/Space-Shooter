@@ -26,6 +26,21 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
+    this.sfx = {
+      explosions: [
+        this.sound.add("explosion1"),
+        this.sound.add("explosion2")
+      ],
+      laser: this.sound.add("laser")
+    };
+
+    this.anims.create({
+      key: "sprExplosion",
+      frames: this.anims.generateFrameNumbers("sprExplosion"),
+      frameRate: 20,
+      repeat: 0
+    });
+    
     // add background image to scene
     let image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
@@ -85,14 +100,28 @@ class GameScene extends Phaser.Scene {
       'sprPlayer'
     );
 
-    this.physics.add.collider(this.playerBullet, this.enemies, function(playerBullet, enemy) {
+    this.physics.add.collider(this.playerBullets, this.enemies, function(playerBullet, enemy) {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
       
-        enemy.explode(true);
-        playerLaser.destroy();
+        enemy.explosion(true);
+        playerBullet.destroy();
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
+      if (!player.getData("isDead") && !enemy.getData("isDead")) {
+        player.explosion(false);
+        enemy.explosion(true);
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
+      if (!player.getData("isDead") && !laser.getData("isDead")) {
+        player.explosion(false);
+        laser.destroy();
       }
     });
   }

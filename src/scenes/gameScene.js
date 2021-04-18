@@ -23,7 +23,7 @@ class GameScene extends Phaser.Scene {
       }
     }
     return arr;
-  }
+  } 
 
   create() {
     this.sfx = {
@@ -31,7 +31,7 @@ class GameScene extends Phaser.Scene {
         this.sound.add("explosion1"),
         this.sound.add("explosion2")
       ],
-      laser: this.sound.add("laser")
+      laser: this.sound.add("laser", { volume: 0.3 })
     };
 
     this.anims.create({
@@ -118,16 +118,16 @@ class GameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
-      if (!player.getData("isDead") && !laser.getData("isDead")) {
+    this.physics.add.overlap(this.player, this.enemyBullets, function(player, enemyBullet) {
+      if (!player.getData("isDead") && !enemyBullet.getData("isDead")) {
         player.explosion(false);
-        laser.destroy();
+        enemyBullet.destroy();
       }
     });
   }
 
   update() {
-    
+
     if (!this.player.getData("isDead")) {
       this.player.update();
 

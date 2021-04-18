@@ -13,6 +13,7 @@ import explosionTwo from '../assets/Explosion2.wav';
 import battleTheme from '../assets/Battle-Theme.mp3';
 import laserSound from '../assets/Laser2.wav';
 import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
+import scoreContainer from '../assets/ui/GemsAndSteel_no_text.png';
 import explosion from '../assets/explosion.png'
 
 class PreloaderScene extends Phaser.Scene {
@@ -82,6 +83,7 @@ class PreloaderScene extends Phaser.Scene {
     });
   
     this.load.image('spaceButton', spaceButton);
+    this.load.image('scoreContainer', scoreContainer);
     this.load.image('sprPlayer', player);
     this.load.image('sprNormalEnemy', normalEnemy);
     this.load.image('sprChaserEnemy', fastEnemy);

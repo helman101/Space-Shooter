@@ -26,6 +26,8 @@ class GameScene extends Phaser.Scene {
   } 
 
   create() {
+    let score = 0;
+    
     this.sfx = {
       explosions: [
         this.sound.add("explosion1"),
@@ -42,8 +44,17 @@ class GameScene extends Phaser.Scene {
     });
     
     // add background image to scene
-    let image = this.add.image(300, 400, 'bgImage');
-    image.setScale(0.4);
+    this.add.image(300, 400, 'bgImage');
+
+
+    let scoreCont = this.add.image(110, 40, 'scoreContainer');
+    scoreCont.scaleX = 0.8
+    scoreCont.scaleY = 0.6
+
+    scoreCont.depth = 100
+    let scoreText = this.add.text(0, 0, 'Score: 0', { fontFamily: 'FreeMono', fontSize: '18px', fontStyle: 'bold', fill: '#fff' });
+    scoreText.depth = 101
+    Phaser.Display.Align.In.Center(scoreText, scoreCont);
 
     // add functional keyboards to move the player
     this.cursors = this.input.keyboard.createCursorKeys();
@@ -105,7 +116,9 @@ class GameScene extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-      
+        score += 10;
+        scoreText.setText(`Score: ${score}`)
+        Phaser.Display.Align.In.Center(scoreText, scoreCont);
         enemy.explosion(true);
         playerBullet.destroy();
       }
@@ -153,7 +166,6 @@ class GameScene extends Phaser.Scene {
         this.player.setData("isShooting", false);
       }
     }
-
     
 
     laserUpdate(this, this.enemies.getChildren(), 'enemy');

@@ -4,6 +4,7 @@ class FastEnemy extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprFastEnemy', 'fastEnemy');
     this.body.velocity.y = Phaser.Math.Between(100, 200);
+    this.points = 20;
   }
 }
 

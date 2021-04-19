@@ -9,6 +9,7 @@ class ChaserEnemy extends Entity {
       CHASE: "CHASE"
     };
     this.state = this.states.NORMAL;
+    this.points = 10;
   }
 
   update() {

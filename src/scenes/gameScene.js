@@ -6,7 +6,7 @@ import FastEnemy from '../entities/fastEnemy'
 import laserUpdate from '../objects/laserUpdate'
 
 class GameScene extends Phaser.Scene {
-  constructor() {
+  constructor() { 
     super('Game');
   }
 
@@ -76,7 +76,7 @@ class GameScene extends Phaser.Scene {
             0
           );
         }
-        else if (Phaser.Math.Between(0, 10) >= 5) {
+        else if (Phaser.Math.Between(0, 10) >= 5 && score >= 100) {
           if (this.getEnemiesByType("ChaserShip").length < 5) {
 
             enemy = new ChaserEnemy(
@@ -86,7 +86,7 @@ class GameScene extends Phaser.Scene {
             );
           }
         }
-        else {
+        else if (Phaser.Math.Between(0, 10) >= 7 && score >= 500){
           enemy = new FastEnemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
@@ -116,7 +116,7 @@ class GameScene extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-        score += 10;
+        score += enemy.points;
         scoreText.setText(`Score: ${score}`)
         Phaser.Display.Align.In.Center(scoreText, scoreCont);
         enemy.explosion(true);
@@ -127,6 +127,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
       if (!player.getData("isDead") && !enemy.getData("isDead")) {
         player.explosion(false);
+        player.onDestroy();
         enemy.explosion(true);
       }
     });
@@ -134,6 +135,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.enemyBullets, function(player, enemyBullet) {
       if (!player.getData("isDead") && !enemyBullet.getData("isDead")) {
         player.explosion(false);
+        player.onDestroy();
         enemyBullet.destroy();
       }
     });

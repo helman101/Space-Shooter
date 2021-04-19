@@ -43,6 +43,17 @@ class Player extends Entity {
       }
     }
   }
+
+  onDestroy() {
+    this.scene.time.addEvent({
+      delay: 1000,
+      callback: function() {
+        this.scene.scene.start("GameOver");
+      },
+      callbackScope: this,
+      loop: false
+    });
+  }
 }
 
 export default Player;

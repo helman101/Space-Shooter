@@ -8,7 +8,7 @@ class NormalEnemy extends Entity {
     this.points = 15;
 
     this.shootTimer = this.scene.time.addEvent({
-      delay: 1000,
+      delay: 1200,
       callback: function() {
         var laser = new EnemyBullet(
           this.scene,

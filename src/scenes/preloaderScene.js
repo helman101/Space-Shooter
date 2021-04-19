@@ -14,7 +14,9 @@ import battleTheme from '../assets/Battle-Theme.mp3';
 import laserSound from '../assets/Laser2.wav';
 import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
 import scoreContainer from '../assets/ui/GemsAndSteel_no_text.png';
-import explosion from '../assets/explosion.png'
+import explosion from '../assets/explosion.png';
+import soundOn from '../assets/b_Sound1.png';
+import soundOff from '../assets/b_Sound2_Inactive.png';
 
 class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -81,7 +83,10 @@ class PreloaderScene extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
     });
-  
+
+
+    this.load.image('soundOn', soundOn);
+    this.load.image('soundOff', soundOff);
     this.load.image('spaceButton', spaceButton);
     this.load.image('scoreContainer', scoreContainer);
     this.load.image('sprPlayer', player);

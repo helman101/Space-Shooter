@@ -1,6 +1,5 @@
 import Phaser from 'phaser';
-import Button from '../objects/button'
-import config from '../config/config'
+import laderBoardModule from '../APIs/laderBoard'
 
 class PlayerInputScene extends Phaser.Scene {
   constructor() {
@@ -8,7 +7,10 @@ class PlayerInputScene extends Phaser.Scene {
   }
 
   create() {
-    let gameScore = localStorage.getItem('score')
+    this.model = this.sys.game.globals.model;
+
+    let gameScore = localStorage.getItem('score');
+
     let div = document.createElement('div');
     let textInput = document.createElement('input');
     let submitButton = document.createElement('button');
@@ -20,6 +22,8 @@ class PlayerInputScene extends Phaser.Scene {
     submitButton.classList.add('submitButton')
 
     submitButton.addEventListener('click', () => {
+      let name = textInput.value;
+      laderBoardModule.setPlayer({user: name, score: gameScore})
       this.scene.start('GameOver');
     })
 

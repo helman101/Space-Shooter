@@ -26,6 +26,8 @@ class GameScene extends Phaser.Scene {
   } 
 
   create() {
+    this.model = this.sys.game.globals.model;
+
     let score = 0;
     
     this.sfx = {
@@ -118,6 +120,7 @@ class GameScene extends Phaser.Scene {
         }
         score += enemy.points;
         scoreText.setText(`Score: ${score}`)
+        window.localStorage.setItem('score', score);
         Phaser.Display.Align.In.Center(scoreText, scoreCont);
         enemy.explosion(true);
         playerBullet.destroy();

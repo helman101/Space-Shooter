@@ -8,7 +8,10 @@ let laderBoardModule = (() => {
 
   let setPlayer = async (player) => {
     let result = await $.post(url, player);
+    console.log(result)
   }
 
-  return { getScores, setPlayer}
+  return { getScores, setPlayer }
 })();
+
+export default laderBoardModule;

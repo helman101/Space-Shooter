@@ -8,6 +8,8 @@ class TitleScene extends Phaser.Scene {
   }
 
   create() {
+    this.model = this.sys.game.globals.model;
+    
     let image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
     
@@ -24,6 +26,14 @@ class TitleScene extends Phaser.Scene {
     this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'spaceButton', 'Play', 'Game');
     this.gameButton = new Button(this, config.width/2, config.height/2, 'spaceButton', 'Options', 'Options');
     this.gameButton = new Button(this, config.width/2, config.height/2 + 100, 'spaceButton', 'Credits', 'Credits');
+
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('mainTheme', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
   }
 }
 

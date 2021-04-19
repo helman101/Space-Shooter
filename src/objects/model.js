@@ -1,6 +1,5 @@
 class Model {
   constructor() {
-    this._score = '0';
     this._soundOn = true;
     this._musicOn = true;
     this._bgMusicPlaying = false;
@@ -28,14 +27,6 @@ class Model {
  
   get bgMusicPlaying() {
     return this._bgMusicPlaying;
-  }
-
-  set score(value) {
-    this._musicOn = value;
-  }
- 
-  get score() {
-    return this._musicOn;
   }
 }
 

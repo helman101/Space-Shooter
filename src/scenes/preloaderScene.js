@@ -16,7 +16,8 @@ import spaceButton from '../assets/ui/BeamGlow_no_text.png';
 import scoreContainer from '../assets/ui/GemsAndSteel_no_text.png';
 import explosion from '../assets/sprites/explosion.png';
 import soundOn from '../assets/ui/b_Sound1.png';
-import soundOff from '../assets/ui/_Sound2_Inactive.png';
+import soundOff from '../assets/ui/b_Sound2_Inactive.png';
+import menuTheme from '../assets/audio/Loop-Menu.wav'
 
 class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -98,6 +99,7 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('sprBullet2', bulletTwo);
     this.load.image('sprBulletL', bulletLarge);
     this.load.audio('mainTheme', mainTheme);
+    this.load.audio('menuTheme', menuTheme);
     this.load.audio('explosion1', explosionOne);
     this.load.audio('explosion2', explosionTwo);
     this.load.audio('battleTheme', battleTheme);

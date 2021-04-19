@@ -35,9 +35,14 @@ class Player extends Entity {
         this.setData("timerShootTick", this.getData("timerShootTick") + 1); 
       }
       else {
-        var laser = new PlayerBullet(this.scene, this.x, this.y + (-this.width * 0.5));
+        let laser = new PlayerBullet(this.scene, this.x, this.y + (-this.width * 0.5));
         this.scene.playerBullets.add(laser);
-        this.scene.sfx.laser.play();
+
+        let model = this.scene.sys.game.globals.model;
+
+        if (model.soundOn === true) {
+          this.scene.sfx.laser.play();
+        }   
       
         this.setData("timerShootTick", 0);
       }

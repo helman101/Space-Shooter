@@ -15,7 +15,12 @@ class Entity extends Phaser.GameObjects.Sprite {
       this.setTexture("sprExplosion");  
       this.play("sprExplosion"); 
 
-      this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
+
+      let model = this.scene.sys.game.globals.model;
+        
+      if (model.soundOn === true) {
+        this.scene.sfx.explosions[Phaser.Math.Between(0, this.scene.sfx.explosions.length - 1)].play();
+      }
 
       if (this.shootTimer !== undefined) {
         if (this.shootTimer) {

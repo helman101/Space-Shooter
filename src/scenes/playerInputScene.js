@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
-import laderBoardModule from '../APIs/laderBoard'
+import laderBoardModule from '../APIs/laderBoard';
+import Button from '../objects/button';
+import config from '../config/config';
 
 class PlayerInputScene extends Phaser.Scene {
   constructor() {
@@ -12,7 +14,7 @@ class PlayerInputScene extends Phaser.Scene {
     this.model.bgMusicPlaying = false;
 
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
-      this.bgMusic = this.sound.add('mainTheme', { volume: 0.5, loop: true });
+      this.bgMusic = this.sound.add('menuTheme', { volume: 0.5, loop: true });
       this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
@@ -67,6 +69,7 @@ class PlayerInputScene extends Phaser.Scene {
     title.setOrigin(0.5);
     scoreText.setOrigin(0.5);
 
+    this.gameButton = new Button(this, config.width/2, config.height/2 + 200, 'spaceButton', 'Skip', 'GameOver');
   }
 }
 

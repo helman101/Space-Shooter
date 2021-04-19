@@ -9,7 +9,7 @@ class PlayerInputScene extends Phaser.Scene {
   create() {
     this.model = this.sys.game.globals.model;
 
-    let gameScore = localStorage.getItem('score');
+    let gameScore = localStorage.getItem('score') || 0;
 
     let div = document.createElement('div');
     let textInput = document.createElement('input');
@@ -23,7 +23,7 @@ class PlayerInputScene extends Phaser.Scene {
 
     submitButton.addEventListener('click', () => {
       let name = textInput.value;
-      laderBoardModule.setPlayer({user: name, score: gameScore})
+      laderBoardModule.setPlayer(name, gameScore);
       this.scene.start('GameOver');
     })
 

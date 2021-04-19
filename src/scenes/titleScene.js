@@ -26,6 +26,7 @@ class TitleScene extends Phaser.Scene {
     this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'spaceButton', 'Play', 'Game');
     this.gameButton = new Button(this, config.width/2, config.height/2, 'spaceButton', 'Options', 'Options');
     this.gameButton = new Button(this, config.width/2, config.height/2 + 100, 'spaceButton', 'Credits', 'Credits');
+    this.gameButton = new Button(this, config.width/2, config.height/2 + 200, 'spaceButton', 'Scores', 'Scores');
 
     this.model = this.sys.game.globals.model;
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {

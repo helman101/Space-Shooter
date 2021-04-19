@@ -6,7 +6,6 @@ let laderBoardModule = (() => {
   let getScores = async () => {
     let result = await fetch(url)
     let data = await result.json();
-    console.log(data.result)
     return data
   }
 
@@ -25,10 +24,8 @@ let laderBoardModule = (() => {
         body: JSON.stringify(player),
       });
       const data = await response.json();
-      console.log(data)
       return data;
     } catch (error) {
-      console.log(error)
       return error;
     }
   }

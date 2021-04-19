@@ -19,11 +19,12 @@ class ScoreScene extends Phaser.Scene {
 
     let showScores = async () => {
       let scores = await laderBoardModule.getScores();
-      console.log(scores)
+      scores = scores.result.sort((a,b) => b.score - a.score)
       let y = 200;
+      let length = (scores.length >= 10) ? 10 : scores.length;
 
-      for (let i = 0; i < 10; i+=1 ){
-        let score = this.add.text(300, y, `${scores.result[i].user}............${scores.result[i].score}`, { fontSize: '25px', fill: '#fff' });
+      for (let i = 0; i < length; i+=1 ){
+        let score = this.add.text(300, y, `${scores[i].user}............${scores[i].score}`, { fontSize: '25px', fill: '#fff' });
         score.setOrigin(0.5, 0.5)
         y += 50;
       }

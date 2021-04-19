@@ -27,6 +27,15 @@ class GameScene extends Phaser.Scene {
 
   create() {
     this.model = this.sys.game.globals.model;
+    this.sys.game.globals.bgMusic.stop();
+    this.model.bgMusicPlaying = false;
+
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('battleTheme', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
 
     let score = 0;
     
@@ -88,7 +97,7 @@ class GameScene extends Phaser.Scene {
             );
           }
         }
-        else if (Phaser.Math.Between(0, 10) >= 7 && score >= 500){
+        else if (score >= 500){
           enemy = new FastEnemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),

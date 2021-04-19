@@ -8,6 +8,15 @@ class PlayerInputScene extends Phaser.Scene {
 
   create() {
     this.model = this.sys.game.globals.model;
+    this.sys.game.globals.bgMusic.stop();
+    this.model.bgMusicPlaying = false;
+
+    if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
+      this.bgMusic = this.sound.add('mainTheme', { volume: 0.5, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
 
     let gameScore = localStorage.getItem('score') || 0;
 
@@ -24,7 +33,9 @@ class PlayerInputScene extends Phaser.Scene {
     submitButton.addEventListener('click', () => {
       let name = textInput.value;
       laderBoardModule.setPlayer(name, gameScore);
-      this.scene.start('GameOver');
+      if (name !== '') {
+        this.scene.start('GameOver');
+      }
     })
 
     div.appendChild(textInput);

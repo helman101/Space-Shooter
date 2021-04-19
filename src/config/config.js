@@ -11,6 +11,9 @@ export default {
       gravity: { x: 0, y: 0 }
     }
   },
+  dom: {
+    createContainer: true
+  },
   pixelart: true,
   roundPixels: true
 };

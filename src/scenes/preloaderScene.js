@@ -1,22 +1,22 @@
 import Phaser from 'phaser';
-import player from '../assets/fighter.png';
-import fastEnemy from '../assets/fast-enemy.png';
-import normalEnemy from '../assets/normal-enemy.png';
-import chaserEnemy from '../assets/chaser-enemy.png';
+import player from '../assets/sprites/fighter.png';
+import fastEnemy from '../assets/sprites/fast-enemy.png';
+import normalEnemy from '../assets/sprites/normal-enemy.png';
+import chaserEnemy from '../assets/sprites/chaser-enemy.png';
 import background from '../assets/back.png';
-import bulletOne from '../assets/bullet_2.png';
-import bulletTwo from '../assets/bullet_1.png';
-import bulletLarge from '../assets/bulet_3.png';
-import mainTheme from '../assets/OutThere.ogg';
-import explosionOne from '../assets/Explosion.wav';
-import explosionTwo from '../assets/Explosion2.wav';
-import battleTheme from '../assets/Battle-Theme.mp3';
-import laserSound from '../assets/Laser2.wav';
+import bulletOne from '../assets/sprites/bullet_2.png';
+import bulletTwo from '../assets/sprites/bullet_1.png';
+import bulletLarge from '../assets/sprites/bulet_3.png';
+import mainTheme from '../assets/audio/OutThere.ogg';
+import explosionOne from '../assets/audio/Explosion.wav';
+import explosionTwo from '../assets/audio/Explosion2.wav';
+import battleTheme from '../assets/audio/Battle-Theme.mp3';
+import laserSound from '../assets/audio/Laser2.wav';
 import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
 import scoreContainer from '../assets/ui/GemsAndSteel_no_text.png';
-import explosion from '../assets/explosion.png';
-import soundOn from '../assets/b_Sound1.png';
-import soundOff from '../assets/b_Sound2_Inactive.png';
+import explosion from '../assets/sprites/explosion.png';
+import soundOn from '../assets/ui/b_Sound1.png';
+import soundOff from '../assets/ui/_Sound2_Inactive.png';
 
 class PreloaderScene extends Phaser.Scene {
   constructor() {

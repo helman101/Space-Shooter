@@ -50,7 +50,6 @@ class GameScene extends Phaser.Scene {
       repeat: 0,
     });
 
-    // add background image to scene
     this.add.image(300, 400, 'bgImage');
 
 
@@ -65,7 +64,6 @@ class GameScene extends Phaser.Scene {
     scoreText.depth = 101;
     Phaser.Display.Align.In.Center(scoreText, scoreCont);
 
-    // add functional keyboards to move the player
     this.cursors = this.input.keyboard.createCursorKeys();
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -109,7 +107,6 @@ class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    // create and add the player to the scene
     this.player = new Player(
       this,
       this.game.config.width * 0.5,

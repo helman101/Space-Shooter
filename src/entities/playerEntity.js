@@ -51,7 +51,7 @@ class Player extends Entity {
   onDestroy() {
     this.scene.time.addEvent({
       delay: 1000,
-      callback() {
+      callback: () => {
         this.scene.scene.start('PlayerInput');
       },
       callbackScope: this,

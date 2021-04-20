@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import laderBoardModule from '../APIs/laderBoard';
 import Button from '../objects/button';
 import config from '../config/config';
 import nameForm from '../helper/Form';

@@ -7,6 +7,6 @@ const getEnemiesByType = (scene, type) => {
     }
   }
   return arr;
-}
+};
 
 export default getEnemiesByType;

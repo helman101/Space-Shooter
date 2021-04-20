@@ -41,4 +41,4 @@ describe('API Module Fuctionality', () => {
     const message = await laderBoardModule.setPlayer('Happy', 101);
     expect(message.result).toMatch('Leaderboard score created correctly.');
   });
-}); 
+});

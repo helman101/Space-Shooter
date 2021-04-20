@@ -21,8 +21,8 @@ const nameForm = (scene, goTo, score) => {
 
   div.appendChild(textInput);
   div.appendChild(submitButton);
-  
-  return div
-}
+
+  return div;
+};
 
 export default nameForm;

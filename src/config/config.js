@@ -16,5 +16,5 @@ export default {
   },
   pixelart: true,
   roundPixels: true,
-  canvasStyle: 'margin: 0 auto;'
+  canvasStyle: 'margin: 0 auto;',
 };

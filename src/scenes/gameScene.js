@@ -5,6 +5,7 @@ import ChaserEnemy from '../entities/chaserEnemy';
 import FastEnemy from '../entities/fastEnemy';
 import laserUpdate from '../helper/laserUpdate';
 import getEnemiesByType from '../helper/enemyHelper';
+import BossEnemy from '../entities/bossEnemy'
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -17,7 +18,7 @@ class GameScene extends Phaser.Scene {
     this.model.bgMusicPlaying = false;
 
     if (this.model.musicOn === true && this.model.bgMusicPlaying === false) {
-      this.bgMusic = this.sound.add('mainTheme', { volume: 0.5, loop: true });
+      this.bgMusic = this.sound.add('battleTheme', { volume: 0.5, loop: true });
       this.bgMusic.play();
       this.model.bgMusicPlaying = true;
       this.sys.game.globals.bgMusic = this.bgMusic;
@@ -132,6 +133,15 @@ class GameScene extends Phaser.Scene {
         player.onDestroy();
         enemyBullet.destroy();
       }
+    });
+
+    this.boss = new BossEnemy(this, 300, -300)
+
+    this.bossTween = this.tweens.add({
+      targets: this.boss,
+      y: 50,
+      ease: 'Power1',
+      duration: 8000,
     });
   }
 

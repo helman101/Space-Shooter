@@ -3,6 +3,7 @@ import player from '../assets/sprites/fighter.png';
 import fastEnemy from '../assets/sprites/fast-enemy.png';
 import normalEnemy from '../assets/sprites/normal-enemy.png';
 import chaserEnemy from '../assets/sprites/chaser-enemy.png';
+import bossEnemy from '../assets/sprites/boss.png'
 import background from '../assets/back.png';
 import bulletOne from '../assets/sprites/bullet_2.png';
 import bulletTwo from '../assets/sprites/bullet_1.png';
@@ -96,6 +97,7 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('sprNormalEnemy', normalEnemy);
     this.load.image('sprChaserEnemy', fastEnemy);
     this.load.image('sprFastEnemy', chaserEnemy);
+    this.load.image('sprBossEnemy', bossEnemy);
     this.load.image('bgImage', background);
     this.load.image('sprBullet1', bulletOne);
     this.load.image('sprBullet2', bulletTwo);

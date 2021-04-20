@@ -9,7 +9,7 @@
 ![screenshot](./src/assets/game.PNG)
 
 
-## [Check my Game Design Document]()
+## [Check my Game Design Document](./docs/GDD.md)
 
 ## Built With
 

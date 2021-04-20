@@ -21,7 +21,7 @@
 - Babel
 - JEST
 
-## [Live Link]()
+## [Live Link](https://helman101.github.io/Space-Shooter/)
 
 ## Instructions to Play
 

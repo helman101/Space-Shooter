@@ -3,22 +3,12 @@ import Player from '../entities/playerEntity';
 import NormalEnemy from '../entities/normalEnemy';
 import ChaserEnemy from '../entities/chaserEnemy';
 import FastEnemy from '../entities/fastEnemy';
-import laserUpdate from '../objects/laserUpdate';
+import laserUpdate from '../helper/laserUpdate';
+import getEnemiesByType from '../helper/enemyHelper';
 
 class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
-  }
-
-  getEnemiesByType(type) {
-    const arr = [];
-    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
-      const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData('type') === type) {
-        arr.push(enemy);
-      }
-    }
-    return arr;
   }
 
   create() {
@@ -83,7 +73,7 @@ class GameScene extends Phaser.Scene {
             0,
           );
         } else if (Phaser.Math.Between(0, 10) >= 5 && score >= 100) {
-          if (this.getEnemiesByType('ChaserShip').length < 5) {
+          if (getEnemiesByType(this, 'ChaserShip').length < 5) {
             enemy = new ChaserEnemy(
               this,
               Phaser.Math.Between(0, this.game.config.width),

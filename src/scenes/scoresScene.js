@@ -20,7 +20,7 @@ class ScoreScene extends Phaser.Scene {
     const showScores = async () => {
       let scores = await laderBoardModule.getScores();
       scores = scores.result.sort((a, b) => b.score - a.score);
-      let y = 200;
+      let y = 170;
       const length = (scores.length >= 10) ? 10 : scores.length;
 
       for (let i = 0; i < length; i += 1) {

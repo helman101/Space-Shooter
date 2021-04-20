@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import Entity from './entity';
 
 class FastEnemy extends Entity {

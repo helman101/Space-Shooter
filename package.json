@@ -254,6 +254,7 @@
     "read-pkg-up": "^2.0.0",
     "readable-stream": "^3.6.0",
     "redent": "^3.0.0",
+    "regenerator-runtime": "^0.13.7",
     "regexpp": "^2.0.1",
     "remark": "^13.0.0",
     "remark-parse": "^9.0.0",

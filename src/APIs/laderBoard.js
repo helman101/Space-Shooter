@@ -1,18 +1,18 @@
 import 'regenerator-runtime';
 
-let laderBoardModule = (() => {
-  let url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JEsLUihmCMuLpplPt45n/scores'
+const laderBoardModule = (() => {
+  const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JEsLUihmCMuLpplPt45n/scores';
 
-  let getScores = async () => {
-    let result = await fetch(url)
-    let data = await result.json();
-    return data
-  }
+  const getScores = async () => {
+    const result = await fetch(url);
+    const data = await result.json();
+    return data;
+  };
 
-  let setPlayer = async (name, score) => {
+  const setPlayer = async (name, score) => {
     const player = {
       user: name,
-      score: score,
+      score,
     };
     try {
       const response = await fetch(url, {
@@ -28,9 +28,9 @@ let laderBoardModule = (() => {
     } catch (error) {
       return error;
     }
-  }
+  };
 
-  return { getScores, setPlayer }
+  return { getScores, setPlayer };
 })();
 
 export default laderBoardModule;

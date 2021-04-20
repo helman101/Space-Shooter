@@ -10,9 +10,9 @@ import CreditsScene from './scenes/creditsScene';
 import OptionsScene from './scenes/optionScene';
 import Model from './objects/model';
 import ScoreScene from './scenes/scoresScene';
- 
+
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
     const model = new Model();
     this.globals = { model };
@@ -28,5 +28,5 @@ class Game extends Phaser.Game {
     this.scene.start('Boot');
   }
 }
- 
+
 window.game = new Game();

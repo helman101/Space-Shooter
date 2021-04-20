@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
-import Button from '../objects/button'
-import config from '../config/config'
+import Button from '../objects/button';
+import config from '../config/config';
 
 class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -8,22 +8,22 @@ class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    let image = this.add.image(300, 400, 'bgImage');
+    const image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
-    
-    let title = this.add.text(this.game.config.width * 0.5, 128, "Game Over", {
+
+    const title = this.add.text(this.game.config.width * 0.5, 128, 'Game Over', {
       fontFamily: 'FreeMono',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center'
+      align: 'center',
     });
 
     title.setOrigin(0.5);
 
-    this.gameButton = new Button(this, config.width/2, config.height/2 - 100, 'spaceButton', 'Restart', 'Game');
-    this.gameButton = new Button(this, config.width/2, config.height/2, 'spaceButton', 'Menu', 'Title');
-    this.gameButton = new Button(this, config.width/2, config.height/2 + 100, 'spaceButton', 'Scores', 'Scores');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 - 100, 'spaceButton', 'Restart', 'Game');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2, 'spaceButton', 'Menu', 'Title');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 100, 'spaceButton', 'Scores', 'Scores');
   }
 }
 

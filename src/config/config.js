@@ -1,19 +1,19 @@
-import 'phaser';
- 
+import Phaser from 'phaser';
+
 export default {
   type: Phaser.AUTO,
   width: 600,
   height: 800,
   title: 'Space Avenger',
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
-      gravity: { x: 0, y: 0 }
-    }
+      gravity: { x: 0, y: 0 },
+    },
   },
   dom: {
-    createContainer: true
+    createContainer: true,
   },
   pixelart: true,
-  roundPixels: true
+  roundPixels: true,
 };

@@ -20,56 +20,56 @@ class PlayerInputScene extends Phaser.Scene {
       this.sys.game.globals.bgMusic = this.bgMusic;
     }
 
-    let gameScore = localStorage.getItem('score') || 0;
+    const gameScore = localStorage.getItem('score') || 0;
 
-    let div = document.createElement('div');
-    let textInput = document.createElement('input');
-    let submitButton = document.createElement('button');
+    const div = document.createElement('div');
+    const textInput = document.createElement('input');
+    const submitButton = document.createElement('button');
     textInput.setAttribute('type', 'text');
     textInput.setAttribute('placeholder', 'Insert you name...');
     textInput.classList.add('text-input');
     textInput.required = true;
     submitButton.textContent = 'Submit';
-    submitButton.classList.add('submitButton')
+    submitButton.classList.add('submitButton');
 
     submitButton.addEventListener('click', () => {
-      let name = textInput.value;
+      const name = textInput.value;
       laderBoardModule.setPlayer(name, gameScore);
       if (name !== '') {
         this.scene.start('GameOver');
       }
-    })
+    });
 
     div.appendChild(textInput);
     div.appendChild(submitButton);
     document.body.appendChild(div);
 
-    let element = this.add.dom(this.game.config.width * 0.5, -400, div);
+    const element = this.add.dom(this.game.config.width * 0.5, -400, div);
     element.setDepth(100);
 
-    let image = this.add.image(300, 400, 'bgImage');
+    const image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
-    
-    let title = this.add.text(this.game.config.width * 0.5, 128, "Game Over", {
+
+    const title = this.add.text(this.game.config.width * 0.5, 128, 'Game Over', {
       fontFamily: 'FreeMono',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center'
+      align: 'center',
     });
 
-    let scoreText = this.add.text(this.game.config.width * 0.5, 300, `Score: ${gameScore}`, {
+    const scoreText = this.add.text(this.game.config.width * 0.5, 300, `Score: ${gameScore}`, {
       fontFamily: 'FreeMono',
       fontSize: 48,
       fontStyle: 'bold',
       color: '#ffffff',
-      align: 'center'
+      align: 'center',
     });
 
     title.setOrigin(0.5);
     scoreText.setOrigin(0.5);
 
-    this.gameButton = new Button(this, config.width/2, config.height/2 + 200, 'spaceButton', 'Skip', 'GameOver');
+    this.gameButton = new Button(this, config.width / 2, config.height / 2 + 200, 'spaceButton', 'Skip', 'GameOver');
   }
 }
 

@@ -1,29 +1,25 @@
 import Phaser from 'phaser';
-import Player from '../entities/playerEntity'
-import NormalEnemy from '../entities/normalEnemy'
-import ChaserEnemy from '../entities/chaserEnemy'
-import FastEnemy from '../entities/fastEnemy'
-import laserUpdate from '../objects/laserUpdate'
+import Player from '../entities/playerEntity';
+import NormalEnemy from '../entities/normalEnemy';
+import ChaserEnemy from '../entities/chaserEnemy';
+import FastEnemy from '../entities/fastEnemy';
+import laserUpdate from '../objects/laserUpdate';
 
 class GameScene extends Phaser.Scene {
-  constructor() { 
+  constructor() {
     super('Game');
   }
 
-  preload() {
-
-  }
-
   getEnemiesByType(type) {
-    var arr = [];
-    for (var i = 0; i < this.enemies.getChildren().length; i++) {
-      var enemy = this.enemies.getChildren()[i];
-      if (enemy.getData("type") == type) {
+    const arr = [];
+    for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      const enemy = this.enemies.getChildren()[i];
+      if (enemy.getData('type') === type) {
         arr.push(enemy);
       }
     }
     return arr;
-  } 
+  }
 
   create() {
     this.model = this.sys.game.globals.model;
@@ -38,33 +34,35 @@ class GameScene extends Phaser.Scene {
     }
 
     let score = 0;
-    
+
     this.sfx = {
       explosions: [
-        this.sound.add("explosion1"),
-        this.sound.add("explosion2")
+        this.sound.add('explosion1'),
+        this.sound.add('explosion2'),
       ],
-      laser: this.sound.add("laser", { volume: 0.3 })
+      laser: this.sound.add('laser', { volume: 0.3 }),
     };
 
     this.anims.create({
-      key: "sprExplosion",
-      frames: this.anims.generateFrameNumbers("sprExplosion"),
+      key: 'sprExplosion',
+      frames: this.anims.generateFrameNumbers('sprExplosion'),
       frameRate: 20,
-      repeat: 0
+      repeat: 0,
     });
-    
+
     // add background image to scene
     this.add.image(300, 400, 'bgImage');
 
 
-    let scoreCont = this.add.image(110, 40, 'scoreContainer');
-    scoreCont.scaleX = 0.8
-    scoreCont.scaleY = 0.6
+    const scoreCont = this.add.image(110, 40, 'scoreContainer');
+    scoreCont.scaleX = 0.8;
+    scoreCont.scaleY = 0.6;
 
-    scoreCont.depth = 100
-    let scoreText = this.add.text(0, 0, 'Score: 0', { fontFamily: 'FreeMono', fontSize: '18px', fontStyle: 'bold', fill: '#fff' });
-    scoreText.depth = 101
+    scoreCont.depth = 100;
+    const scoreText = this.add.text(0, 0, 'Score: 0', {
+      fontFamily: 'FreeMono', fontSize: '18px', fontStyle: 'bold', fill: '#fff',
+    });
+    scoreText.depth = 101;
     Phaser.Display.Align.In.Center(scoreText, scoreCont);
 
     // add functional keyboards to move the player
@@ -77,31 +75,28 @@ class GameScene extends Phaser.Scene {
 
     this.time.addEvent({
       delay: 1500,
-      callback: function() {
-        var enemy = null;
+      callback() {
+        let enemy = null;
 
         if (Phaser.Math.Between(0, 10) >= 3) {
           enemy = new NormalEnemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
-            0
+            0,
           );
-        }
-        else if (Phaser.Math.Between(0, 10) >= 5 && score >= 100) {
-          if (this.getEnemiesByType("ChaserShip").length < 5) {
-
+        } else if (Phaser.Math.Between(0, 10) >= 5 && score >= 100) {
+          if (this.getEnemiesByType('ChaserShip').length < 5) {
             enemy = new ChaserEnemy(
               this,
               Phaser.Math.Between(0, this.game.config.width),
-              0
+              0,
             );
           }
-        }
-        else if (score >= 500){
+        } else if (score >= 500) {
           enemy = new FastEnemy(
             this,
             Phaser.Math.Between(0, this.game.config.width),
-            0
+            0,
           );
         }
 
@@ -111,24 +106,24 @@ class GameScene extends Phaser.Scene {
         }
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
 
     // create and add the player to the scene
     this.player = new Player(
-      this, 
+      this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.8,
-      'sprPlayer'
+      'sprPlayer',
     );
 
-    this.physics.add.collider(this.playerBullets, this.enemies, function(playerBullet, enemy) {
+    this.physics.add.collider(this.playerBullets, this.enemies, (playerBullet, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
         score += enemy.points;
-        scoreText.setText(`Score: ${score}`)
+        scoreText.setText(`Score: ${score}`);
         window.localStorage.setItem('score', score);
         Phaser.Display.Align.In.Center(scoreText, scoreCont);
         enemy.explosion(true);
@@ -136,16 +131,16 @@ class GameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
-      if (!player.getData("isDead") && !enemy.getData("isDead")) {
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead')) {
         player.explosion(false);
         player.onDestroy();
         enemy.explosion(true);
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyBullets, function(player, enemyBullet) {
-      if (!player.getData("isDead") && !enemyBullet.getData("isDead")) {
+    this.physics.add.overlap(this.player, this.enemyBullets, (player, enemyBullet) => {
+      if (!player.getData('isDead') && !enemyBullet.getData('isDead')) {
         player.explosion(false);
         player.onDestroy();
         enemyBullet.destroy();
@@ -154,33 +149,29 @@ class GameScene extends Phaser.Scene {
   }
 
   update() {
-
-    if (!this.player.getData("isDead")) {
+    if (!this.player.getData('isDead')) {
       this.player.update();
 
       if (this.cursors.up.isDown) {
         this.player.moveUp();
-      }
-      else if (this.cursors.down.isDown) {
+      } else if (this.cursors.down.isDown) {
         this.player.moveDown();
       }
-  
+
       if (this.cursors.left.isDown) {
         this.player.moveLeft();
-      }
-      else if (this.cursors.right.isDown) {
+      } else if (this.cursors.right.isDown) {
         this.player.moveRight();
       }
-  
+
       if (this.keySpace.isDown) {
-        this.player.setData("isShooting", true);
-      }
-      else {
-        this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-        this.player.setData("isShooting", false);
+        this.player.setData('isShooting', true);
+      } else {
+        this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+        this.player.setData('isShooting', false);
       }
     }
-    
+
 
     laserUpdate(this, this.enemies.getChildren(), 'enemy');
     laserUpdate(this, this.enemyBullets.getChildren(), 'laser');

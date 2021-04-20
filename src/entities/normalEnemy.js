@@ -1,5 +1,6 @@
+import Phaser from 'phaser';
 import Entity from './entity';
-import EnemyBullet from './enemyBullet'
+import EnemyBullet from './enemyBullet';
 
 class NormalEnemy extends Entity {
   constructor(scene, x, y) {
@@ -9,17 +10,17 @@ class NormalEnemy extends Entity {
 
     this.shootTimer = this.scene.time.addEvent({
       delay: 1200,
-      callback: function() {
-        var laser = new EnemyBullet(
+      callback() {
+        const laser = new EnemyBullet(
           this.scene,
           this.x,
-          this.y + (this.width * 0.5)
+          this.y + (this.width * 0.5),
         );
         laser.setScale(this.scaleX);
         this.scene.enemyBullets.add(laser);
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
   }
 

@@ -12,12 +12,12 @@ import explosionOne from '../assets/audio/Explosion.wav';
 import explosionTwo from '../assets/audio/Explosion2.wav';
 import battleTheme from '../assets/audio/Battle-Theme.mp3';
 import laserSound from '../assets/audio/Laser2.wav';
-import spaceButton from '../assets/ui/BeamGlow_no_text.png'; 
+import spaceButton from '../assets/ui/BeamGlow_no_text.png';
 import scoreContainer from '../assets/ui/GemsAndSteel_no_text.png';
 import explosion from '../assets/sprites/explosion.png';
 import soundOn from '../assets/ui/b_Sound1.png';
 import soundOff from '../assets/ui/b_Sound2_Inactive.png';
-import menuTheme from '../assets/audio/Loop-Menu.wav'
+import menuTheme from '../assets/audio/Loop-Menu.wav';
 
 class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -25,59 +25,59 @@ class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    var progressBar = this.add.graphics();
-    var progressBox = this.add.graphics();
+    const progressBar = this.add.graphics();
+    const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(140, 370, 320, 50);
-  
-    var width = this.cameras.main.width;
-    var height = this.cameras.main.height;
-    var loadingText = this.make.text({
+
+    const { width } = this.cameras.main;
+    const { height } = this.cameras.main;
+    const loadingText = this.make.text({
       x: width * 0.5,
       y: height * 0.5 - 50,
       text: 'Loading...',
       style: {
         font: '20px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
-    
+
     loadingText.setOrigin(0.5, 0.5);
-  
-    var percentText = this.make.text({
+
+    const percentText = this.make.text({
       x: width / 2,
       y: height / 2 - 5,
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
     percentText.setOrigin(0.5, 0.5);
-  
-    var assetText = this.make.text({
+
+    const assetText = this.make.text({
       x: width / 2,
       y: height / 2 + 50,
       text: '',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
-      }
+        fill: '#ffffff',
+      },
     });
     assetText.setOrigin(0.5, 0.5);
-  
-    this.load.on('progress', function (value) {
-      percentText.setText(parseInt(value * 100) + '%');
+
+    this.load.on('progress', (value) => {
+      percentText.setText(`${parseInt(value * 100, 10)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRect(150, 380, 300 * value, 30);
     });
-  
-    this.load.on('fileprogress', function (file) {
-      assetText.setText('Loading asset: ' + file.key);
+
+    this.load.on('fileprogress', (file) => {
+      assetText.setText(`Loading asset: ${file.key}`);
     });
-  
-    this.load.on('complete', function () {
+
+    this.load.on('complete', () => {
       progressBar.destroy();
       progressBox.destroy();
       loadingText.destroy();
@@ -104,14 +104,14 @@ class PreloaderScene extends Phaser.Scene {
     this.load.audio('explosion2', explosionTwo);
     this.load.audio('battleTheme', battleTheme);
     this.load.audio('laser', laserSound);
-    this.load.spritesheet("sprExplosion", explosion, {
+    this.load.spritesheet('sprExplosion', explosion, {
       frameWidth: 90,
-      frameHeight: 89
+      frameHeight: 89,
     });
   }
 
   create() {
-    this.scene.start('Title')
+    this.scene.start('Title');
   }
 }
 

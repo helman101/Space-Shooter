@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: 'main.js',
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -33,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
-        use: 'file-loader',
+        type: 'asset/resource',
       },
       {
         test: /\.(mp3|ogg|wav)$/i,

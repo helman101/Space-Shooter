@@ -26,8 +26,8 @@ class PlayerInputScene extends Phaser.Scene {
 
     document.body.appendChild(form);
 
-    const element = this.add.dom(this.game.config.width * 0.5, -400, form);
-    element.setDepth(100);
+    this.element = this.add.dom(document.body.offsetWidth * 0.5, document.body.offsetHeight * 0.5 + 50, form, 'margin: 0 auto;');
+    this.element.setDepth(100);
 
     const image = this.add.image(300, 400, 'bgImage');
     image.setScale(0.4);
@@ -52,6 +52,10 @@ class PlayerInputScene extends Phaser.Scene {
     scoreText.setOrigin(0.5);
 
     this.gameButton = new Button(this, config.width / 2, config.height / 2 + 200, 'spaceButton', 'Skip', 'GameOver');
+  }
+
+  update() {
+    this.element.setPosition(document.body.offsetWidth * 0.5, document.body.offsetHeight * 0.5 + 50)
   }
 }
 

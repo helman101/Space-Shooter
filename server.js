@@ -1,5 +1,5 @@
 const path = require('path');
-import express from 'express';
+const express = require('express');
 
 const app = express();
 const DIST_DIR = path.join(__dirname, '/dist');

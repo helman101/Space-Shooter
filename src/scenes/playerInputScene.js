@@ -55,7 +55,8 @@ class PlayerInputScene extends Phaser.Scene {
   }
 
   update() {
-    this.element.setPosition(document.body.offsetWidth * 0.5, document.body.offsetHeight * 0.5 + 50)
+    this.element
+      .setPosition(document.body.offsetWidth * 0.5, document.body.offsetHeight * 0.5 + 50);
   }
 }
 

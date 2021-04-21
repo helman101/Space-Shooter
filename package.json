@@ -96,6 +96,7 @@
     "estraverse": "^4.3.0",
     "esutils": "^2.0.3",
     "execall": "^2.0.0",
+    "express": "^4.17.1",
     "extend": "^3.0.2",
     "external-editor": "^3.1.0",
     "fast-deep-equal": "^3.1.3",

@@ -10,9 +10,28 @@ Everything can change overnight, that's what john learned, a pilot of the space 
 
 <br/>
 
+## Game description
+
+<br/>
+
+### Characters
+
+- Protagonist: You will be fighting like john, he is in the middle of a space battle trying to revenge his family inside the last thing he has from them, his spaceship, build with the help of his son, the player will be using lasers to attack the enemy.
+
+- Villains: The Reiks are a super aggressive warrior raze, they are fear in all corners of the galaxy
+
+  - Pilot Reik: These enemies are recognized professional pilots, and they never have mercy on the battlefield, as the player, this enemies attack with laser
+
+  - Kamikaze Reik: They are training to do whatever is need to give victory to his leader, so be careful because they don't shoot and don't have fear to die either, they are gonna follow you until you are dead.
+
+  - Speed force Reiks: These enemies are Reiks that were trained to drive at an incredible velocity.
+
 ## Gameplay
 
 <br/>
+
+### Game screeshot:
+![screenshot](../src/assets/game.PNG)
 
 ### Controls
 
@@ -25,9 +44,13 @@ Everything can change overnight, that's what john learned, a pilot of the space 
 
   - And press SPACE to SHOOT
 
+### Scenes
+
+  - Space: The player will be fighting in the space zone of the Reiks planet, he must annihilate as many of his enemies as he can to honor the name of the fallen on his planet.
+
 ### GameFlow
 
-  - You have only one life
+  - You and the enemies have only one life
   - More enemies each time you get a certain amount of score
   - 3 diferents types of enemies
   - When the user dies, 
@@ -37,7 +60,7 @@ Everything can change overnight, that's what john learned, a pilot of the space 
 
 ## Score
 
-Each enemy gives you different score:
+When the player kills an enemy, they gives you different amounts of score:
 
   - The Normal blue enemies: 15 points
   - The Chaser red enemies: 10 points

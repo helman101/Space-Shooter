@@ -21,7 +21,7 @@
 - Babel
 - JEST
 
-## [Live Link](https://helman101.github.io/Space-Shooter/)
+## [Live Link](https://vast-sierra-62271.herokuapp.com/)
 
 ## Instructions to Play
 
